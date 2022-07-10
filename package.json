@@ -1,0 +1,25 @@
+{
+  "name": "movies_app",
+  "version": "0.0.0",
+  "description": "List of movies",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImMPrada/movies_app.git"
+  },
+  "keywords": [
+    "movies",
+    "app",
+    "react",
+    "api"
+  ],
+  "author": "immprada",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ImMPrada/movies_app/issues"
+  },
+  "homepage": "https://github.com/ImMPrada/movies_app#readme"
+}
