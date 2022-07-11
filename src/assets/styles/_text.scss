@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&display=swap');
+
+
+@mixin font-300 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  line-height: 1.3;
+}
+
+@mixin font-500 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+
+@mixin heading-l {
+  @include font-300();
+  font-size: 32px;
+  letter-spacing: -0.5px;
+}
+
+@mixin heading-m {
+  @include font-300();
+  font-size: 24px;
+}
+
+@mixin heading-s {
+  @include font-500();
+  font-size: 24px;
+}
+
+@mixin heading-xs {
+  @include font-500();
+  font-size: 18x;
+}
+
+@mixin body-m {
+  @include font-300();
+  font-size: 15px;
+}
+
+@mixin body-s {
+  @include font-300();
+  font-size: 13px;
+}
