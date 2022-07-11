@@ -1,15 +1,12 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Routes } from 'react-router-dom';
 
-import NotFound from '../containers/NotFound';
+import Component from '../components/Component';
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Switch>
-        {/* <Route exact path="/checkout/success" component={Success} /> */}
-        <Route component={NotFound} />
-      </Switch>
+      <Component />
     </BrowserRouter>
   );
 }
