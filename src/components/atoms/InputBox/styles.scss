@@ -1,0 +1,15 @@
+@import '../../../assets/styles/partials/globals';
+
+.input-field {
+  width: 100%;
+  border-bottom: 1px solid red;
+
+  input {
+    width: auto;
+    border: none;
+    border-radius: none;
+    background-color: transparent;
+    box-sizing: border-box;    
+  }
+}
+
