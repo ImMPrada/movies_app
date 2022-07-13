@@ -7,20 +7,33 @@ const InputBox = ({
   errorText,
 }) => {
   const [globalState, setGlobalState] = useState('onBlur');
+
   useEffect(()=>{
     if(!errorText) return
 
+    console.log(errorText)
     setGlobalState('onError')
   }, [errorText])
+
+  const changeStyle = (newState) => {
+    if (newState === 'onBlur') {
+      if(!errorText) return setGlobalState('onBlur')
+
+      return setGlobalState('onError')
+    }
+
+    return setGlobalState('onFocus')
+  }
+
   return (
 
     <div className={'input-field ' + globalState}>
       <input
-        onFocus={() => setGlobalState('onFocus')}
-        onBlur={() => setGlobalState('onBlur')} 
+        placeHolder={placeHolderText}
+        onFocus={() => changeStyle('onFocus')}
+        onBlur={() => changeStyle('onBlur')} 
         className="input-field__input"
         id={id} 
-        placeHolder={placeHolderText} 
         type="text" 
       />
       {(errorText) && (

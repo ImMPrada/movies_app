@@ -7,6 +7,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <InputBox />
+    <InputBox 
+      placeHolderText="An example of placeholder"
+      errorText="An error message"
+    />
   </React.StrictMode>
 );
