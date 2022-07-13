@@ -33,7 +33,7 @@ const InputBox = ({
       onClick={() => document.getElementById(id).focus()}
     >
       <input
-        placeHolder={placeHolderText}
+        placeholder={placeHolderText}
         onFocus={() => changeStyle('onFocus')}
         onBlur={() => changeStyle('onBlur')} 
         className="input-field__input"
