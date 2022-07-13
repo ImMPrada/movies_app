@@ -1,0 +1,25 @@
+@import '../../../assets/styles/partials/globals';
+
+
+.button {
+  width: 100%;
+  border: none;
+  padding: 15px;
+  border-radius: 6px;
+  background-color: $alert_color;
+  cursor: pointer;
+  
+  @include body-m();
+  color: $white;
+  
+  &:hover {
+    color: $dark_grey;
+    background-color: $white;
+  }
+
+  &:active {
+    color: $dark_grey;
+    background-color: $alert_color;
+  }
+}
+
