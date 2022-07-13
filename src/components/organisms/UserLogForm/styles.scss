@@ -1,32 +1,15 @@
 @import '../../../assets/styles/partials/globals';
 
-.register-form {
-  background-color: $dark_grey;
-  padding: 32px;
-  border-radius: 20px;
+.user-log-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  &__title {
-    @include heading-l();
-    color: $white;
-    margin-bottom: 16px;
+  &__logo {
+    margin-bottom: 83px;
   }
 
-  &__form {
-    padding: 24px 0;
-  
-    .input-field {
-      margin-bottom: 24px;
-    }
-  }
-
-  &__note {
-    @include body-m();
-    color: $white;
-    text-align: center;
-
-    a {
-      text-decoration: none;
-      color: $alert_color;
-    }
+  .register-form {
+    width: 520px;
   }
 }
