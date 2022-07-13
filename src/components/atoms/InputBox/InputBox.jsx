@@ -28,7 +28,10 @@ const InputBox = ({
 
   return (
 
-    <div className={'input-field ' + globalState}>
+    <div 
+      className={'input-field ' + globalState}
+      onClick={() => document.getElementById(id).focus()}
+    >
       <input
         placeHolder={placeHolderText}
         onFocus={() => changeStyle('onFocus')}
