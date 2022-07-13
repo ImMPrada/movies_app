@@ -1,6 +1,10 @@
 @import '../../../assets/styles/partials/globals';
 
 .register-form {
+  background-color: $dark_grey;
+  padding: 32px;
+  border-radius: 20px;
+
   &__title {
     @include heading-l();
     color: $white;
