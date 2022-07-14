@@ -10,7 +10,10 @@ const Button = ({
 
 
   return (
-    <button className="button">
+    <button 
+      className="button"
+      onClick={onClick}  
+    >
       {prompt}
     </button>
   )
