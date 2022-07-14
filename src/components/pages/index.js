@@ -1,1 +1,1 @@
-export {default as UserRegisterForm} from './UserRegisterForm';
+export {default as UserLoginForm} from './UserLoginForm';

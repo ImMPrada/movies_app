@@ -3,17 +3,17 @@ import {
   UserLogForm
 } from '../../templates';
 import {
-  RegisterForm
+  LoginForm
 } from '../../molecules';
 import './styles.scss';
 
-const UserRegisterForm = ({}) => {
+const UserLoginForm = ({}) => {
 
   return (
     <UserLogForm>
-      <RegisterForm />
+      <LoginForm />
     </UserLogForm>
   )
 };
 
-export default UserRegisterForm;
+export default UserLoginForm;
