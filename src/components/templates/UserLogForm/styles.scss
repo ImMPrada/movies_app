@@ -1,9 +1,11 @@
 @import '../../../assets/styles/partials/globals';
 
 .user-log-form {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   &__logo {
     margin-bottom: 83px;

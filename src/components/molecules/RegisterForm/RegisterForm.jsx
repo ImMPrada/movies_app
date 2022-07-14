@@ -44,7 +44,7 @@ const RegisterForm = ({}) => {
         />
       </form>
       <div className="register-form__note">
-        Already have an account? <a href="#">Login</a>
+        Already have an account? <a href="/login">Login</a>
       </div>
     </div>
   )

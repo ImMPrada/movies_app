@@ -38,7 +38,7 @@ const LoginForm = ({}) => {
         />
       </form>
       <div className="login-form__note">
-        Don't have an account? <a href="#">Sign Up</a>
+        Don't have an account? <a href="/signup">Sign Up</a>
       </div>
     </div>
   )
