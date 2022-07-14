@@ -1,0 +1,32 @@
+@import '../../../assets/styles/partials/globals';
+
+.register-form {
+  background-color: $dark_grey;
+  padding: 32px;
+  border-radius: 20px;
+
+  &__title {
+    @include heading-l();
+    color: $white;
+    margin-bottom: 16px;
+  }
+
+  &__form {
+    padding: 24px 0;
+  
+    .input-field {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__note {
+    @include body-m();
+    color: $white;
+    text-align: center;
+
+    a {
+      text-decoration: none;
+      color: $alert_color;
+    }
+  }
+}
