@@ -24,20 +24,6 @@ const useLoginForm = (initialValues) => {
 
   const getErrorMessage = (validationResults) => validationResults.filter(result => result != false)[0] || null
 
-
-  // Public
-
-  const updateField = (field, value) => {
-    const currentErrors = errors
-    const currentValues = values
-
-    const validationResults = runValidations(validationSchema[field].validations, value)
-    currentValues[field] = value
-    setValues({...currentValues})
-    currentErrors[field] = getErrorMessage(validationResults)
-    setErrors({...currentErrors})
-  }
-
   const validateForm = () => {
     const currentErrors = errors
     const results = []
@@ -56,11 +42,29 @@ const useLoginForm = (initialValues) => {
   }
 
 
+  // Public
+
+  const updateField = (field, value) => {
+    const currentErrors = errors
+    const currentValues = values
+
+    const validationResults = runValidations(validationSchema[field].validations, value)
+    currentValues[field] = value
+    setValues({...currentValues})
+    currentErrors[field] = getErrorMessage(validationResults)
+    setErrors({...currentErrors})
+  }
+
+  const submitForm = (form) => {
+    if(validateForm()) form.submit()
+  }
+
+
   return {
     values,
     errors,
     updateField,
-    validateForm,
+    submitForm,
   }
 }
 
