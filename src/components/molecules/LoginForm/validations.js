@@ -1,8 +1,5 @@
 const emptyCheck = {
-  validationFunction: function(value){ 
-    console.log(value)
-    return (value === '' || value === null)
-  },
+  validationFunction: function(value){ return (value === '' || value === null)},
   prompt: 'Please enter a value'
 }
 

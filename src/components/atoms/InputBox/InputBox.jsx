@@ -15,7 +15,6 @@ const InputBox = ({
   useEffect(()=>{
     if(!errorText) return
 
-    console.log(errorText)
     setGlobalState('onError')
   }, [errorText])
 

@@ -16,27 +16,27 @@ const LoginForm = ({}) => {
     values,
     errors,
     updateField,
+    validateForm,
   } = useLoginForm(formInitialValues);
-  const formSubmit = (e) => {
-    console.log(e)
-  }
 
   useEffect(() => {
     console.log(values)
     console.log(errors)
   }, [values, errors])
+
+
   return (
     <div className="login-form">
       <h3 className="login-form__title">
         Login
       </h3>
       <form
+        id="loginForm"
         className="login-form__form"
-        action=""
-        onSubmit={() => formSubmit({
-          email: userEmail.value,
-          password: password.value,
-        })}  
+        onSubmit={(e) => {
+          e.preventDefault()
+          return true
+        }}
       >
         <InputBox 
           id="userEmail"
@@ -56,6 +56,7 @@ const LoginForm = ({}) => {
         />
         <Button
           prompt="Login to your account"
+          onClick={() => loginForm.submit()}
         />
       </form>
       <div className="login-form__note">
