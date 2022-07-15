@@ -3,13 +3,28 @@ import {
   InputBox,
   Button,
 } from '../../atoms';
+import useLoginForm from './useLoginForm';
 import './styles.scss';
 
+const formInitialValues = {
+  userEmail: '',
+  password: '',
+}
+
 const LoginForm = ({}) => {
+  const {
+    values,
+    errors,
+    updateField,
+  } = useLoginForm(formInitialValues);
   const formSubmit = (e) => {
     console.log(e)
   }
 
+  useEffect(() => {
+    console.log(values)
+    console.log(errors)
+  }, [values, errors])
   return (
     <div className="login-form">
       <h3 className="login-form__title">
@@ -27,11 +42,17 @@ const LoginForm = ({}) => {
           id="userEmail"
           placeHolderText="Email address"
           type="text"
+          value={values.userEmail}
+          onBlur={() => updateField("userEmail", userEmail.value)}
+          errorText={errors.userEmail}
         />
         <InputBox
           id="password"
           placeHolderText="Password"
           type="password"
+          value={values.password}
+          onBlur={() => updateField("password", password.value)}
+          errorText={errors.password}
         />
         <Button
           prompt="Login to your account"
