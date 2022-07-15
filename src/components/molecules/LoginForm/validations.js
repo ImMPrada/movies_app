@@ -1,5 +1,5 @@
 const emptyCheck = {
-  f: function(value){ 
+  validationFunction: function(value){ 
     console.log(value)
     return (value === '' || value === null)
   },
@@ -8,7 +8,7 @@ const emptyCheck = {
 
 const validateEmail = {
   emailReGex: /^[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
-  f: function(value){ return value.match(this.emailReGex) ? false : true},
+  validationFunction: function(value){ return value.match(this.emailReGex) ? false : true},
   prompt: 'Please enter a valid email'
 }
 

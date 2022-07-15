@@ -16,7 +16,7 @@ const useLoginForm = (initialValues) => {
   const runValidations = (validations, value) => {
     
     return validations.map(validation => {
-      const isError = validation.f(value)
+      const isError = validation.validationFunction(value)
       return isError ? validation.prompt : isError
     })
 
@@ -29,7 +29,7 @@ const useLoginForm = (initialValues) => {
 
   const updateField = (field, value) => {
     const currentErrors = errors
-    
+
     const validationResults = runValidations(validationSchema[field].validations, value)
     currentErrors[field] = getErrorMessage(validationResults)
     setErrors({...currentErrors})
