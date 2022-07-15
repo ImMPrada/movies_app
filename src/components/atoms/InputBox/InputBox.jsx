@@ -5,6 +5,9 @@ const InputBox = ({
   id,
   placeHolderText,
   errorText,
+  onFocus,
+  onBlur,
+  value,
   type,
 }) => {
   const [globalState, setGlobalState] = useState('onBlur');
@@ -16,16 +19,6 @@ const InputBox = ({
     setGlobalState('onError')
   }, [errorText])
 
-  const changeStyle = (newState) => {
-    if (newState === 'onBlur') {
-      if(!errorText) return setGlobalState('onBlur')
-
-      return setGlobalState('onError')
-    }
-
-    return setGlobalState('onFocus')
-  }
-
   return (
 
     <div 
@@ -33,16 +26,23 @@ const InputBox = ({
       onClick={() => document.getElementById(id).focus()}
     >
       <input
-        placeholder={placeHolderText}
-        onFocus={() => changeStyle('onFocus')}
-        onBlur={() => changeStyle('onBlur')} 
-        className="input-field__input"
         id={id} 
         type={type} 
+        className="input-field__input"
+        placeholder={placeHolderText}
+        defaultValue={value}
+        onFocus={() => {
+          onFocus ? onFocus() : null
+          setGlobalState('onFocus')
+        }}
+        onBlur={() => {
+          onBlur ? onBlur() : null
+          setGlobalState('onBlur')
+        }} 
       />
       {(errorText) && (
         <span className="input-field__error">
-          Error message
+          {errorText}
         </span>
       )}
     </div>
