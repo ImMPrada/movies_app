@@ -5,10 +5,10 @@ const InputBox = ({
   id,
   placeHolderText,
   errorText,
-  onFocus,
-  onBlur,
   value,
   type,
+  onBlur,
+  onFocus,
 }) => {
   const [globalState, setGlobalState] = useState('onBlur');
 
@@ -16,6 +16,7 @@ const InputBox = ({
     if(!errorText) return
 
     setGlobalState('onError')
+    if(errorText == '') setGlobalState('onBlur')
   }, [errorText])
 
   return (

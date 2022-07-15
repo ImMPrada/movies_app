@@ -22,7 +22,7 @@ const useLoginForm = (initialValues) => {
 
   }
 
-  const getErrorMessage = (validationResults) => validationResults.filter(result => result != false)[0] || null
+  const getErrorMessage = (validationResults) => (validationResults.filter(result => result != false)[0] || null)
 
   const validateForm = () => {
     const currentErrors = errors
@@ -30,9 +30,9 @@ const useLoginForm = (initialValues) => {
 
     Object.keys(values).forEach(field => {
       const value = values[field]
-
       const validationResults = runValidations(validationSchema[field].validations, value)
       const errorMessaage = getErrorMessage(validationResults)
+
       currentErrors[field] = errorMessaage
       if(errorMessaage){results.push(errorMessaage)}
     })
@@ -47,8 +47,8 @@ const useLoginForm = (initialValues) => {
   const updateField = (field, value) => {
     const currentErrors = errors
     const currentValues = values
-
     const validationResults = runValidations(validationSchema[field].validations, value)
+
     currentValues[field] = value
     setValues({...currentValues})
     currentErrors[field] = getErrorMessage(validationResults)
