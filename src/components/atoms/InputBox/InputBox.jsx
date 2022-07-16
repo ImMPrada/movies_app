@@ -19,6 +19,12 @@ const InputBox = ({
     if(errorText == '') setGlobalState('onBlur')
   }, [errorText])
 
+  useEffect(() => {
+    if(!globalState) return
+
+    if(globalState == 'onBlur' && errorText != null) setGlobalState('onError')
+  }, [globalState])
+
   return (
 
     <div 
