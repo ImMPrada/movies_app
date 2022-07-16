@@ -2,4 +2,4 @@
 
 # movies app
 
-<div style="text-align:center"><img src='https://github.com/ImMPrada/movies_app/blob/main/Movie.png' /></div>
+<div style="width:100%; text-align:center"><img src='https://github.com/ImMPrada/movies_app/blob/main/Movie.png' /></div>
