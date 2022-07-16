@@ -3,7 +3,7 @@ import {
   InputBox,
   Button,
 } from '../../atoms';
-import useLoginForm from './useLoginForm';
+import { useLoginForm } from '../../../hooks';
 import './styles.scss';
 
 const formInitialValues = {
