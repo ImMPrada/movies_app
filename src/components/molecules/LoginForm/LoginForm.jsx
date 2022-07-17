@@ -28,7 +28,7 @@ const LoginForm = ({}) => {
       <form
         id='loginForm'
         className='login-form__form'
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={(e) => submitForm(e)}
       >
         <InputBox 
           id='userEmail'
@@ -48,7 +48,7 @@ const LoginForm = ({}) => {
         />
         <Button
           prompt='Login to your account'
-          onClick={() => submitForm(loginForm)}
+          type='submit'
         />
       </form>
       <div className='login-form__note'>

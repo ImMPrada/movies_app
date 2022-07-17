@@ -55,7 +55,10 @@ const useLoginForm = (initialValues) => {
     setErrors({...currentErrors})
   }
 
-  const submitForm = (form) => {
+  const submitForm = (e) => {
+    const form = e.target
+    
+    e.preventDefault()
     if(validateForm()) form.submit()
   }
 
