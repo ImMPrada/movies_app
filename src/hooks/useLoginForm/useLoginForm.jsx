@@ -20,10 +20,10 @@ const useLoginForm = (initialValues) => {
     })
   )
 
-  const getErrorMessage = (validationResults) => (validationResults.filter(result => result)[0] || null)
+  const getErrorMessage = (validationResults) => (validationResults.filter(result => result)[0])
 
   const validateForm = () => {
-    const currentErrors = errors
+    const currentErrors = {...errors}
     const results = []
 
     Object.keys(values).forEach(field => {
@@ -32,10 +32,10 @@ const useLoginForm = (initialValues) => {
       const errorMessaage = getErrorMessage(validationResults)
 
       currentErrors[field] = errorMessaage
-      if(errorMessaage){results.push(errorMessaage)}
+      if(errorMessaage) results.push(errorMessaage)
     })
     
-    setErrors({...currentErrors})
+    setErrors(currentErrors)
     return results.length === 0
   }
 
@@ -43,14 +43,14 @@ const useLoginForm = (initialValues) => {
   // Public
 
   const updateField = (field, value) => {
-    const currentErrors = errors
-    const currentValues = values
+    const currentErrors = {...errors}
+    const currentValues = {...values}
     const validationResults = runValidations(validationSchema[field].validations, value)
 
     currentValues[field] = value
-    setValues({...currentValues})
+    setValues(currentValues)
     currentErrors[field] = getErrorMessage(validationResults)
-    setErrors({...currentErrors})
+    setErrors(currentErrors)
   }
 
   const submitForm = (e) => {
