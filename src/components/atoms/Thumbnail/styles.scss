@@ -9,6 +9,7 @@
   position: absolute;
   box-sizing: border-box;
   z-index: 2;
+  border-radius: 10px;
 }
 
 @mixin circle-button-base {
@@ -22,12 +23,13 @@
 
 .thumbnail {
   position: relative;
+  border-radius: 10px;
   @include thumbnail-dimensions();
 
   &__overlay--playable {
     @include overlay-base();
     @include thumbnail-dimensions();
-    background: rgba(255,255,255,0.30);
+    background: rgba(255,255,255,0.40);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,7 +37,7 @@
     button {
       @include circle-button-base();
       padding: 10px;
-      background: rgba(255,255,255,0.40);
+      background: rgba(130, 130, 130, 0.50);
       width: 50px;
       height: 50px;
     }
@@ -81,12 +83,14 @@
     position: absolute;
     z-index: 1;
     box-sizing: border-box;
+    border-radius: 10px;
     @include thumbnail-dimensions();
 
     img {
       height: 100%;
       width: 100%;
       object-fit: 'contain';
+      border-radius: 10px;
     }
   }
 }

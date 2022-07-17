@@ -13,7 +13,7 @@ root.render(
     <h2> Thumbnail not bookmarked:</h2>
     <br/>
     <Thumbnail 
-      imgSource='https://html.com/wp-content/uploads/flamingo.webp'
+      imgSource='https://i.blogs.es/8f3d2e/_adult_swim____rick_and_morty_season_5_finale_promo_0_28_screenshot.0/840_560.jpeg'
       markable
     />
     <br/>
@@ -21,7 +21,7 @@ root.render(
     <h2> Thumbnail bookmarked:</h2>
     <br/>
     <Thumbnail 
-      imgSource='https://html.com/wp-content/uploads/flamingo.webp'
+      imgSource='https://i.blogs.es/8f3d2e/_adult_swim____rick_and_morty_season_5_finale_promo_0_28_screenshot.0/840_560.jpeg'
       markable
       isMarked
     />
@@ -30,7 +30,7 @@ root.render(
     <h2> Thumbnail of a playable:</h2>
     <br/>
     <Thumbnail 
-      imgSource='https://html.com/wp-content/uploads/flamingo.webp'
+      imgSource='https://i.blogs.es/8f3d2e/_adult_swim____rick_and_morty_season_5_finale_promo_0_28_screenshot.0/840_560.jpeg'
       playable
     />
   </React.StrictMode>
