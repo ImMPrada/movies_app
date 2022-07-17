@@ -20,7 +20,7 @@ const useLoginForm = (initialValues) => {
     })
   )
 
-  const getErrorMessage = (validationResults) => (validationResults.filter(result => result != false)[0] || null)
+  const getErrorMessage = (validationResults) => (validationResults.filter(result => result)[0] || null)
 
   const validateForm = () => {
     const currentErrors = errors
