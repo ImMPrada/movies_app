@@ -9,7 +9,18 @@ root.render(
   <React.StrictMode>
     <Thumbnail 
       imgSource='https://html.com/wp-content/uploads/flamingo.webp'
-      size={200}
+      markable
+    />
+    <br/>
+    <Thumbnail 
+      imgSource='https://html.com/wp-content/uploads/flamingo.webp'
+      markable
+      isMarked
+    />
+    <br/>
+    <Thumbnail 
+      imgSource='https://html.com/wp-content/uploads/flamingo.webp'
+      playable
     />
   </React.StrictMode>
 );
