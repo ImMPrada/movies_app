@@ -3,14 +3,20 @@ import './styles.scss'
 
 const Thumbnail = ({
   id,
-  placeHolderText,
-  errorText,
+  imgSource,
 }) => {
 
 
   return (
+    <div className='thumbnail'>
+      <div className="thumbnail__overlay--active">
+        HOLA
+      </div>
+      <div className="thumbnail__base">
+        <img  src={imgSource} alt='' />
+      </div>
+    </div>
 
-    <img src='https://html.com/wp-content/uploads/flamingo.webp' alt="" />
 
   )
 };

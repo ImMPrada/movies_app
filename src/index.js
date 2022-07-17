@@ -7,6 +7,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <Thumbnail/>
+    <Thumbnail 
+      imgSource='https://html.com/wp-content/uploads/flamingo.webp'
+      size={200}
+    />
   </React.StrictMode>
 );
