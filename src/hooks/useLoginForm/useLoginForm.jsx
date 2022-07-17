@@ -13,14 +13,12 @@ const useLoginForm = (initialValues) => {
 
   // Private
 
-  const runValidations = (validations, value) => {
-    
-    return validations.map(validation => {
+  const runValidations = (validations, value) => (
+    validations.map(validation => {
       const isError = validation.validationFunction(value)
       return isError ? validation.prompt : isError
     })
-
-  }
+  )
 
   const getErrorMessage = (validationResults) => (validationResults.filter(result => result != false)[0] || null)
 
