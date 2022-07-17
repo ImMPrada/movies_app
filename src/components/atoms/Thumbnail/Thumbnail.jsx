@@ -10,9 +10,8 @@ const Thumbnail = ({
 
   return (
 
-    <div className={'input-field ' + globalState}>
+    <img src='https://html.com/wp-content/uploads/flamingo.webp' alt="" />
 
-    </div>
   )
 };
 
