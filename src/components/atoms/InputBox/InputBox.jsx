@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import './styles.scss'
+import './styles.scss';
+
+const INPUT_STATES = {
+  blur: 'onBlur',
+  error: 'onError',
+  focus: 'onFocus'
+}
+
 
 const InputBox = ({
   id,
@@ -10,19 +17,19 @@ const InputBox = ({
   onBlur,
   onFocus,
 }) => {
-  const [globalState, setGlobalState] = useState('onBlur');
+  const [globalState, setGlobalState] = useState(INPUT_STATES.blur);
 
   useEffect(()=>{
     if(!errorText) return
 
-    setGlobalState('onError')
-    if(errorText == '') setGlobalState('onBlur')
+    setGlobalState(INPUT_STATES.error)
+    if(errorText == '') setGlobalState(INPUT_STATES.blur)
   }, [errorText])
 
   useEffect(() => {
     if(!globalState) return
 
-    if(globalState == 'onBlur' && errorText != null) setGlobalState('onError')
+    if(globalState == INPUT_STATES.blur && errorText != null) setGlobalState(INPUT_STATES.error)
   }, [globalState])
 
   return (
@@ -39,11 +46,11 @@ const InputBox = ({
         defaultValue={value}
         onFocus={() => {
           onFocus ? onFocus() : null
-          setGlobalState('onFocus')
+          setGlobalState(INPUT_STATES.focus)
         }}
         onBlur={() => {
           onBlur ? onBlur() : null
-          setGlobalState('onBlur')
+          setGlobalState(INPUT_STATES.blur)
         }} 
       />
       {(errorText) && (
