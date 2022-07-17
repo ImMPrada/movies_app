@@ -1,47 +1,92 @@
 @import '../../../assets/styles/partials/globals';
 
-.thumbnail {
-  position: relative;
-  // width: 100%;
-  // height: 100%;
+@mixin thumbnail-dimensions {
   width: 255px;
   height: 174px;
+}
 
-  &__overlay--active {
-    position: absolute;
-    z-index: 2;
-    background: rgba(255,255,255,0.40);
-    box-sizing: border-box;
-    width: 300px;
-    height: 180px;
+@mixin overlay-base {
+  position: absolute;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+@mixin circle-button-base {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 50%;
+  z-index: 3;
+  cursor: pointer;
+}
+
+
+.thumbnail {
+  position: relative;
+  @include thumbnail-dimensions();
+
+  &__overlay--playable {
+    @include overlay-base();
+    @include thumbnail-dimensions();
+    background: rgba(255,255,255,0.30);
     display: flex;
     justify-content: center;
     align-items: center;
     
     button {
-      box-sizing: border-box;
-      z-index: 3;
-      background: rgba(255, 0, 0, 0.4);
-      padding: 0;
-      border: none;
-      border-radius: 50%;
-      border: 1px solid black;
+      @include circle-button-base();
+      padding: 10px;
+      background: rgba(255,255,255,0.40);
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__overlay--markable {
+    @include overlay-base();
+    @include thumbnail-dimensions();
+    padding: 16px;
+    display: flex;
+    justify-content:flex-end;
+    align-items: flex-start;
+    
+    button {
+      @include circle-button-base();
+      background: rgba(0, 0, 0, 0.6);
+      width: 34px;
+      height: 34px;
+      padding: 10px;
+
+      svg > path {
+        stroke: $white;
+      }
+
+      &:hover {
+        background: $white;
+
+        svg > path {
+          stroke: black;
+        }
+      }
+    }
+  }
+
+  &__overlay--marked {
+    button > svg > path {
+      stroke: white;
+      fill: white
     }
   }
 
   &__base {
     position: absolute;
     z-index: 1;
-    border: 1px solid pink;
     box-sizing: border-box;
-    width: 300px;
-    height: 180px;
+    @include thumbnail-dimensions();
 
     img {
       height: 100%;
       width: 100%;
       object-fit: 'contain';
-      
     }
   }
 }
