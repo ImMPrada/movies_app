@@ -1,30 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import './styles.scss'
+import './styles.scss';
+
+const INPUT_STATES = {
+  blur: 'onBlur',
+  error: 'onError',
+  focus: 'onFocus'
+}
+
 
 const InputBox = ({
   id,
   placeHolderText,
   errorText,
+  value,
   type,
+  onBlur,
+  onFocus,
 }) => {
-  const [globalState, setGlobalState] = useState('onBlur');
+  const [globalState, setGlobalState] = useState(INPUT_STATES.blur);
 
   useEffect(()=>{
     if(!errorText) return
 
-    console.log(errorText)
-    setGlobalState('onError')
+    setGlobalState(INPUT_STATES.error)
+    if(errorText == '') setGlobalState(INPUT_STATES.blur)
   }, [errorText])
 
-  const changeStyle = (newState) => {
-    if (newState === 'onBlur') {
-      if(!errorText) return setGlobalState('onBlur')
+  useEffect(() => {
+    if(!globalState) return
 
-      return setGlobalState('onError')
-    }
-
-    return setGlobalState('onFocus')
-  }
+    if(globalState == INPUT_STATES.blur && errorText != null) setGlobalState(INPUT_STATES.error)
+  }, [globalState])
 
   return (
 
@@ -33,16 +39,23 @@ const InputBox = ({
       onClick={() => document.getElementById(id).focus()}
     >
       <input
-        placeholder={placeHolderText}
-        onFocus={() => changeStyle('onFocus')}
-        onBlur={() => changeStyle('onBlur')} 
-        className="input-field__input"
         id={id} 
         type={type} 
+        className="input-field__input"
+        placeholder={placeHolderText}
+        defaultValue={value}
+        onFocus={() => {
+          onFocus ? onFocus() : null
+          setGlobalState(INPUT_STATES.focus)
+        }}
+        onBlur={() => {
+          onBlur ? onBlur() : null
+          setGlobalState(INPUT_STATES.blur)
+        }} 
       />
       {(errorText) && (
         <span className="input-field__error">
-          Error message
+          {errorText}
         </span>
       )}
     </div>

@@ -3,42 +3,56 @@ import {
   InputBox,
   Button,
 } from '../../atoms';
+import { useLoginForm } from '../../../hooks';
 import './styles.scss';
 
+const formInitialValues = {
+  userEmail: '',
+  password: '',
+}
+
 const LoginForm = ({}) => {
-  const formSubmit = (e) => {
-    console.log(e)
-  }
+  const {
+    values,
+    errors,
+    updateField,
+    submitForm,
+  } = useLoginForm(formInitialValues);
+
 
   return (
-    <div className="login-form">
-      <h3 className="login-form__title">
+    <div className='login-form'>
+      <h3 className='login-form__title'>
         Login
       </h3>
       <form
-        className="login-form__form"
-        action=""
-        onSubmit={() => formSubmit({
-          email: userEmail.value,
-          password: password.value,
-        })}  
+        id='loginForm'
+        className='login-form__form'
+        onSubmit={(e) => submitForm(e)}
       >
         <InputBox 
-          id="userEmail"
-          placeHolderText="Email address"
-          type="text"
+          id='userEmail'
+          placeHolderText='Email address'
+          type='text'
+          value={values.userEmail}
+          onBlur={() => updateField('userEmail', userEmail.value)}
+          errorText={errors.userEmail}
         />
         <InputBox
-          id="password"
-          placeHolderText="Password"
-          type="password"
+          id='password'
+          placeHolderText='Password'
+          type='password'
+          value={values.password}
+          onBlur={() => updateField('password', password.value)}
+          errorText={errors.password}
         />
         <Button
-          prompt="Login to your account"
+          prompt='Login to your account'
+          type='submit'
         />
       </form>
-      <div className="login-form__note">
-        Don't have an account? <a href="/signup">Sign Up</a>
+      <div className='login-form__note'>
+        Don't have an account? <a href='/signup'>Sign Up</a>
       </div>
     </div>
   )
