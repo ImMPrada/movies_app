@@ -1,0 +1,99 @@
+@import '../../../assets/styles/partials/globals';
+
+$thumbnail-width: 255px;
+$thumbnail-height: 174px;
+
+@mixin overlay-base {
+  position: absolute;
+  box-sizing: border-box;
+  z-index: 2;
+  border-radius: 10px;
+}
+
+@mixin circle-button-base {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 50%;
+  z-index: 3;
+  cursor: pointer;
+}
+
+
+.thumbnail {
+  position: relative;
+  border-radius: 10px;
+  width: $thumbnail-width;
+  height: $thumbnail-height;
+
+  &__overlay--playable {
+    @include overlay-base();
+    width: $thumbnail-width;
+    height: $thumbnail-height;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    button {
+      @include circle-button-base();
+      padding: 10px;
+      background: rgba(130, 130, 130, 0.80);
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__overlay--markable {
+    @include overlay-base();
+    width: $thumbnail-width;
+    height: $thumbnail-height;
+    padding: 16px;
+    display: flex;
+    justify-content:flex-end;
+    align-items: flex-start;
+    
+    button {
+      @include circle-button-base();
+      background: rgba(0, 0, 0, 0.8);
+      width: 34px;
+      height: 34px;
+      padding: 10px;
+
+      svg > path {
+        stroke: $white;
+      }
+
+      &:hover {
+        background: $white;
+
+        svg > path {
+          stroke: black;
+        }
+      }
+    }
+  }
+
+  &__overlay--marked {
+    button > svg > path {
+      stroke: white;
+      fill: white
+    }
+  }
+
+  &__base {
+    position: absolute;
+    z-index: 1;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: $thumbnail-width;
+    height: $thumbnail-height;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: 'contain';
+      border-radius: 10px;
+    }
+  }
+}
+
