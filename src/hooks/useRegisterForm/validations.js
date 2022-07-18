@@ -9,20 +9,43 @@ const validateEmail = {
   prompt: 'Please enter a valid email'
 }
 
+const checkEquality = {
+  validationFunction: function(values){ return values.every(value => value === values[0])},
+  prompt: 'Values must be the same'
+}
+
 
 export const validationSchema = {
-  userEmail: {
-    validations: [
-      {
-        ...emptyCheck,
-        prompt: 'Please enter an email',
-      },
-      validateEmail,
-    ]
+  fieldByField: {
+    regEmail: {
+      validations: [
+        {
+          ...emptyCheck,
+          prompt: 'Please enter an email',
+        },
+        validateEmail,
+      ]
+    },
+    password1: {
+      validations: [
+        emptyCheck,
+      ]
+    },
+    password2: {
+      validations: [
+        emptyCheck,
+      ]
+    }
   },
-  password: {
-    validations: [
-      emptyCheck,
-    ]
-  }
+  multipleFields: [
+    {
+      fields: ['password1', 'password2'],
+      validations: [
+        {
+          ...checkEquality,
+          prompt: 'Passwords must match'
+        },
+      ]
+    },
+  ]
 };

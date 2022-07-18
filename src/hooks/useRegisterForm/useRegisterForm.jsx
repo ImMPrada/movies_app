@@ -22,19 +22,42 @@ const useRegisterForm = (initialValues) => {
 
   const getErrorMessage = (validationResults) => (validationResults.filter(result => result)[0])
 
+  const runMultipleFieldValidations = () => {
+    const validations = validationSchema.multipleFields
+    const errors = {}
+
+    validations.forEach(validation => {
+      const valuesArray = validation.fields.map(field => values[field])
+      const validationsResult = validation.validations.map(validation => validation.validationFunction(valuesArray) ? false : validation.prompt)
+      validation.fields.map(field => errors[field] = getErrorMessage(validationsResult))
+    })
+
+    return errors
+  }
+
+  const mergeErrors = (mainErrors, secondErrors) => {
+    Object.keys(mainErrors).forEach(key =>{
+      mainErrors[key] =  secondErrors[key] || mainErrors[key]
+    })
+
+    return mainErrors
+  }
+
   const validateForm = () => {
     const currentErrors = {...errors}
     const results = []
+    
+    const multipleFieldErrors = runMultipleFieldValidations()
 
     Object.keys(values).forEach(field => {
       const value = values[field]
-      const validationResults = runValidations(validationSchema[field].validations, value)
+      const validationResults = runValidations(validationSchema.fieldByField[field].validations, value)
       const errorMessaage = getErrorMessage(validationResults)
 
-      currentErrors[field] = errorMessaage
+      currentErrors[field] = multipleFieldErrors[field] || errorMessaage
       if(errorMessaage) results.push(errorMessaage)
     })
-    
+   
     setErrors(currentErrors)
     return results.length === 0
   }
@@ -45,7 +68,7 @@ const useRegisterForm = (initialValues) => {
   const updateField = (field, value) => {
     const currentErrors = {...errors}
     const currentValues = {...values}
-    const validationResults = runValidations(validationSchema[field].validations, value)
+    const validationResults = runValidations(validationSchema.fieldByField[field].validations, value)
 
     currentValues[field] = value
     setValues(currentValues)

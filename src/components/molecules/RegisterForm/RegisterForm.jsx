@@ -3,12 +3,25 @@ import {
   InputBox,
   Button,
 } from '../../atoms';
+import { useRegisterForm } from '../../../hooks';
 import './styles.scss';
 
+const formInitialValues = {
+  regEmail: '',
+  password1: '',
+  password2: '',
+}
+
+
 const RegisterForm = ({}) => {
-  const formSubmit = (e) => {
-    console.log(e)
-  }
+  const {
+    values,
+    errors,
+    updateField,
+    submitForm,
+  } = useRegisterForm(formInitialValues);
+
+  useEffect(() => {console.log(errors)}, [errors])
 
   return (
     <div className="register-form">
@@ -16,31 +29,37 @@ const RegisterForm = ({}) => {
         Sign Up
       </h3>
       <form
-        className="register-form__form"
-        action=""
-        onSubmit={() => formSubmit({
-          email: regEmail.value,
-          password: password1.value,
-          passwordChecked: password1.value === password2.value,
-        })}  
+        id='registerForm'
+        className='login-form__form'
+        onSubmit={(e) => submitForm(e)}
       >
         <InputBox 
           id="regEmail"
           placeHolderText="Email address"
           type="text"
+          value={values.regEmail}
+          onBlur={() => updateField('regEmail', regEmail.value)}
+          errorText={errors.regEmail}
         />
-        <InputBox
+        <InputBox 
           id="password1"
           placeHolderText="Password"
           type="password"
+          value={values.password1}
+          onBlur={() => updateField('password1', password1.value)}
+          errorText={errors.password1}
         />
-        <InputBox
+        <InputBox 
           id="password2"
           placeHolderText="Repeat password"
           type="password"
+          value={values.password2}
+          onBlur={() => updateField('password2', password2.value)}
+          errorText={errors.password2}
         />
         <Button
-          prompt="Create an account"
+          prompt='Create an account'
+          type='submit'
         />
       </form>
       <div className="register-form__note">
