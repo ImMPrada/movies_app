@@ -1,9 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import {
   PlayVideo,
-  BookMark,
+  Bookmark,
 } from '../../../assets/icons';
 import './styles.scss'
+
+const playableOverlay = (
+  <div className="thumbnail__overlay--playable">
+    <button>
+      <PlayVideo />
+    </button>
+  </div>
+)
+
+const markableOverlay = (isMarked) => (
+  <div className={`thumbnail__overlay--markable ${isMarked ? 'thumbnail__overlay--marked' : '' }`}>
+    <button>
+      <Bookmark />
+    </button>
+  </div>
+)
+
 
 const Thumbnail = ({
   id,
@@ -13,25 +30,10 @@ const Thumbnail = ({
   isMarked,
 }) => {
 
-  const playableOverlay = (
-    <div className="thumbnail__overlay--playable">
-      <button>
-        <PlayVideo />
-      </button>
-    </div>
-  )
-
-  const markableOverlay = (
-    <div className={`thumbnail__overlay--markable ${isMarked ? 'thumbnail__overlay--marked' : '' }`}>
-      <button>
-        <BookMark />
-      </button>
-    </div>
-  )
 
   const setOverlayType = (playable, markable) => {
     if(playable) return playableOverlay
-    if(markable) return markableOverlay
+    if(markable) return markableOverlay(isMarked)
   }
 
   return (
