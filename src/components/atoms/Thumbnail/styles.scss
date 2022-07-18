@@ -1,9 +1,7 @@
 @import '../../../assets/styles/partials/globals';
 
-@mixin thumbnail-dimensions {
-  width: 255px;
-  height: 174px;
-}
+$thumbnail-width: 255px;
+$thumbnail-height: 174px;
 
 @mixin overlay-base {
   position: absolute;
@@ -24,12 +22,14 @@
 .thumbnail {
   position: relative;
   border-radius: 10px;
-  @include thumbnail-dimensions();
+  width: $thumbnail-width;
+  height: $thumbnail-height;
 
   &__overlay--playable {
     @include overlay-base();
-    @include thumbnail-dimensions();
-    background: rgba(255,255,255,0.40);
+    width: $thumbnail-width;
+    height: $thumbnail-height;
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,7 +37,7 @@
     button {
       @include circle-button-base();
       padding: 10px;
-      background: rgba(130, 130, 130, 0.50);
+      background: rgba(130, 130, 130, 0.80);
       width: 50px;
       height: 50px;
     }
@@ -45,7 +45,8 @@
 
   &__overlay--markable {
     @include overlay-base();
-    @include thumbnail-dimensions();
+    width: $thumbnail-width;
+    height: $thumbnail-height;
     padding: 16px;
     display: flex;
     justify-content:flex-end;
@@ -53,7 +54,7 @@
     
     button {
       @include circle-button-base();
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.8);
       width: 34px;
       height: 34px;
       padding: 10px;
@@ -84,7 +85,8 @@
     z-index: 1;
     box-sizing: border-box;
     border-radius: 10px;
-    @include thumbnail-dimensions();
+    width: $thumbnail-width;
+    height: $thumbnail-height;
 
     img {
       height: 100%;
