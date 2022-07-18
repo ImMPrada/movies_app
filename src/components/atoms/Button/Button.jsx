@@ -5,12 +5,17 @@ const Button = ({
   id,
   prompt,
   onClick,
+  type,
 }) => {
   const [globalState, setGlobalState] = useState('onBlur');
 
 
   return (
-    <button className="button">
+    <button 
+      className="button"
+      type={type}
+      onClick={onClick}  
+    >
       {prompt}
     </button>
   )
