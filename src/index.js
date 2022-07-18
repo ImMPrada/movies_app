@@ -9,7 +9,9 @@ import {
   UserLoginForm,
   UserRegisterForm,
 } from './components/pages';
+import {Thumbnail} from './components/atoms'
 import './assets/styles/reset.scss';
+import './assets/styles/temporary.scss'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
